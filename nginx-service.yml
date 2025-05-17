@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort                      # Expone el servicio en un puerto accesible
+  selector:
+    app: nginx                        # Se conecta a los pods que tengan esta etiqueta
+  ports:
+    - port: 80                        # Puerto del servicio dentro del clúster
+      targetPort: 80                  # Puerto interno del contenedor
+      nodePort: 30080                 # Puerto externo (en Minikube o nodos físicos)
